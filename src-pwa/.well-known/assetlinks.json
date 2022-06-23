@@ -1,0 +1,23 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "web",
+      "site": "https://app.rifgo.com"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.rifgo.android",
+      "sha256_cert_fingerprints": [
+        "DB:D3:30:C6:DF:11:50:CF:3F:A5:5C:A9:90:19:7C:78:5D:D4:17:80:0C:25:2D:E0:87:3C:68:4F:1A:E6:C1:98"
+      ]
+    }
+  }
+]

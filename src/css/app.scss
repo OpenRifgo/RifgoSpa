@@ -1,0 +1,73 @@
+// app global css in SCSS form
+
+/* Fix iOS bug with viewport height */
+.platform-ios .q-layout-container {
+  height: 100% !important;
+  min-height: stretch;
+}
+
+.montserrat-700 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+
+  .q-tab__label {
+    font-weight: 700;
+  }
+
+  .q-field {
+    &__native, &__prefix, &__suffix, &__input {
+      font-weight: 500;
+    }
+
+    &__label {
+      font-weight: 700;
+    }
+  }
+
+  .q-field__bottom .q-field__messages {
+    line-height: 0;
+  }
+
+  .q-btn {
+    font-weight: 700;
+  }
+}
+
+.montserrat-800 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+
+  .q-tab__label {
+    font-weight: 800;
+  }
+
+  .q-field {
+    &__label {
+      font-weight: 800;
+    }
+  }
+
+  .q-btn {
+    font-weight: 800;
+  }
+}
+
+.bg-deep-purple-black {
+  background-color: $deep-purple-black;
+}
+
+.bg-white-semi-transparent {
+  background-color: $white-semi-transparent;
+}
+
+.rifgo-card {
+  border-radius: 16px
+}
+
+.rifgo-btn {
+
+}
+
+.q-dialog.fullscreen.q-dialog--modal {
+  z-index: 9100;
+}

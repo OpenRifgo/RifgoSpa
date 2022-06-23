@@ -1,0 +1,23 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "web",
+      "site": "https://app.rifgo.com/pwa"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.rifgo.android",
+      "sha256_cert_fingerprints": [
+        "4E:E8:47:87:62:54:9F:6B:6F:03:65:2F:64:B9:67:63:4E:9A:B2:26:01:E9:4F:AD:36:82:C0:F4:25:53:4E:10"
+      ]
+    }
+  }
+]

@@ -1,0 +1,23 @@
+FROM node:14-stretch
+
+WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends apt-utils && \
+    apt-get install -y yarn && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN yarn global add @quasar/cli
+#RUN yarn global add @cloudflare/wrangler
+
+COPY ./package.json /app/package.json
+COPY ./yarn.lock /app/yarn.lock
+
+RUN yarn install
+
+COPY . /app
+
+EXPOSE 8082
+
+CMD ["quasar", "dev"]

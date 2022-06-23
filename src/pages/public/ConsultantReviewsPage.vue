@@ -1,0 +1,192 @@
+<template>
+
+  <main class="consultant_wrapper">
+
+    <div
+      class="text-left"
+    >
+      <q-btn
+        type="a"
+        :to="consultantPageRoute"
+        dense round flat
+        icon="fas fa-arrow-left"
+        class="q-my-sm"
+      />
+    </div>
+
+    <q-card
+      class="consultant_my_session q-mb-md"
+      flat
+      v-for="(review, reviewIdx) in reviews"
+      v-bind:key="reviewIdx"
+    >
+      <q-card-section>
+        <span
+          v-if="review.sessions"
+        >{{ review.sessions }} {{ review.sessions === 1 ? 'session' : 'sessions' }}</span>
+        <h3>{{ review.name }}</h3>
+        <p
+          class="consultant_offer_description"
+          v-html="review.text"
+        />
+      </q-card-section>
+    </q-card>
+
+  </main>
+</template>
+
+<script lang="ts">
+import {defineComponent, onMounted, ref} from 'vue';
+import {getConsultantReviews} from 'src/api/publicRequests';
+import {IConsultantReview} from 'src/models/ConsultantInterfaces';
+import {useConsultantRoute} from 'src/uses/useConsultant';
+
+export default defineComponent({
+  setup() {
+    const $consultant = useConsultantRoute();
+
+    const reviews = ref<Array<IConsultantReview>>([]);
+
+    onMounted(async () => {
+      reviews.value = await getConsultantReviews($consultant.slug.value);
+    });
+
+    return {
+      reviews,
+      ...$consultant,
+    }
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+main.consultant_wrapper {
+  padding: 0 17px;
+  width: 375px;
+  margin: 0 auto;
+  text-align: center;
+  color: #333333;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+
+  div.avatar_wrapper {
+    display: flex;
+
+    > div {
+      margin: 48px auto 0;
+    }
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 800;
+    margin: 13px 0 0;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  p.consultant_title {
+    margin: 5px 0 24px;
+    font-size: 16px;
+  }
+
+  p.consultant_description {
+    line-height: 24px;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  div.consultant_recommended_me {
+    border: 1px solid #EBEBEB;
+    border-radius: 12px;
+    padding: 24px 24px 38px;
+    margin-bottom: 32px;
+
+    div.q-card__section {
+      padding: 0;
+
+      h3 {
+        margin: 0 0 15px;
+        line-height: 24px;
+        font-size: 24px;
+        letter-spacing: 0.3px;
+        font-weight: 700
+      }
+
+      p.consultant_recommended--promo_text {
+        color: #666666;
+        letter-spacing: -0.4px;
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      button {
+        width: 100%;
+        border-radius: 6px;
+
+        span {
+          color: #615DFF;
+        }
+      }
+    }
+  }
+
+  h2.consultant_my_session_title {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    line-height: 20px;
+
+    margin: 0 0 13px;
+    text-align: left;
+  }
+
+  div.consultant_my_session {
+
+    text-align: left;
+    padding: 24px;
+    border: 1px solid #EBEBEB;
+    border-radius: 12px;
+
+    div.q-card__section {
+      padding: 0;
+
+      span {
+        color: #9C9C9C;
+        line-height: 24px;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        margin: 3px 0 11px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.3px;
+      }
+
+      p.consultant_offer_description {
+        color: #666666;
+        letter-spacing: -0.4px;
+        font-size: 14px;
+        margin-bottom: 26px;
+      }
+
+      button {
+        width: 100%;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        border-radius: 6px;
+
+        svg {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
+}
+</style>

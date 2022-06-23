@@ -1,0 +1,63 @@
+{
+  "name": "rifgo-front",
+  "version": "0.0.1",
+  "description": "RIFGO app",
+  "productName": "RIFGO",
+  "author": "Roman Ekzemplyarov <rexe@ya.ru>",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "dev:ssr": "quasar dev --mode ssr",
+    "build": "quasar build",
+    "build:pwa": "quasar build --mode pwa",
+    "lint": "eslint --ext .js,.ts,.vue ./",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@opentok/client": "^2.20.0",
+    "@quasar/extras": "^1.12.0",
+    "@stripe/stripe-js": "^1.21.1",
+    "@types/mixpanel-browser": "^2.38.0",
+    "@vueuse/core": "< 6.0.0",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "dotenv": "^15.0.0",
+    "hls.js": "^1.0.7",
+    "mitt": "^2.1.0",
+    "mixpanel-browser": "^2.45.0",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.34",
+    "nanoid": "^3.1.25",
+    "node-polyfill-webpack-plugin": "^1.1.4",
+    "quasar": "^2.3.3",
+    "slugify": "^1.6.5",
+    "vue-i18n": "^9.2.0-beta.20"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.13.14",
+    "@quasar/app": "^3.2.3",
+    "@types/node": "^10.17.15",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.0.0",
+    "workbox-webpack-plugin": "^6.0.0"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 12.22.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

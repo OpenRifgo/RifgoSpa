@@ -1,0 +1,32 @@
+{
+  "family": "${ECS_TASK_NAME}",
+  "taskRoleArn": "${ECS_TASK_ROLE_ARN}",
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": "${IMAGE_URI}",
+      "memory": 950,
+      "cpu": 512,
+      "portMappings": [
+        {
+          "containerPort": ${NODE_PORT},
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "staging/var/log/docker",
+          "awslogs-region": "${AWS_DEFAULT_REGION}",
+          "awslogs-stream-prefix": "streaming"
+        }
+      },
+      "environment": [
+        {
+          "name": "HOST",
+          "value": "0.0.0.0"
+        }
+      ]
+    }
+  ]
+}
